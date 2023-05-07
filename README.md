@@ -1,1 +1,1 @@
-# ldav
+# Locally Distributed Activation Vectors
