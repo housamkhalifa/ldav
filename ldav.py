@@ -118,8 +118,8 @@ class ABLSTM(object):
         # turn r into column vector
         r = tf.reshape(r, [-1, 1])
         self.pairwice_concept = r - 2*tf.matmul(q, tf.transpose(q)) + tf.transpose(r)
-        
-        loss_to_minimize = self.loss+ 16201*self.cos_similarity - 182020*tf.reduce_sum((self.pairwice_concept))
+        # depending on your task, you might need to increase the weights till you get a meaningful result
+        loss_to_minimize = self.loss+ 1*self.cos_similarity - 1*tf.reduce_sum((self.pairwice_concept))
         self.target_loss = loss_to_minimize
         tvars = tf.trainable_variables()
         gradients = tf.gradients(loss_to_minimize, tvars, aggregation_method=tf.AggregationMethod.EXPERIMENTAL_TREE)
